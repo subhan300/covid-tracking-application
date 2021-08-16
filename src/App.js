@@ -8,6 +8,8 @@ import {
   Link
 } from "react-router-dom";
 import Covid_form from './pages/covid-form/Covid_form.js';
+import Signup from './pages/registration/Signup';
+import Login from './pages/registration/Login';
 function App() {
   return (
     <div >
@@ -18,6 +20,12 @@ function App() {
               </Route>
                <Route exact path="/covid_form" >
                 <Covid_form />
+              </Route>
+              <Route exact path="/signup" >
+                <Signup />
+              </Route>
+              <Route exact path="/login" >
+                <Login />
               </Route>
 
               
