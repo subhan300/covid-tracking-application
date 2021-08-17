@@ -11,7 +11,7 @@ from rest_framework.generics import CreateAPIView
 from django.contrib.auth.models import User
 
 from django.contrib.auth import get_user_model # If used custom user model
-
+from rest_framework import viewsets
 from .serializers import UserSerializer
 
 
@@ -21,12 +21,15 @@ class CreateUserView(CreateAPIView):
     
     serializer_class = UserSerializer
 
+
+
+
 class MedicalDataList(generics.CreateAPIView):
     queryset = MedicalData.objects.all()
     serializer_class = MedicalDataSerializer
 
 
-class MedicalDataDetail(generics.RetrieveUpdateDestroyAPIView):
+class MedicalDataDetail(generics.ListAPIView):
     queryset = MedicalData.objects.all()
     serializer_class = MedicalDataSerializer
 
