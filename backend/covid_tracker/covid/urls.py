@@ -7,7 +7,7 @@ router = routers.DefaultRouter()
 urlpatterns=[
 
     path('record/',MedicalDataList.as_view()),
-    path('data/',MedicalDataDetail.as_view()),
+    path('data/<int:pk>',MedicalDataDetail.as_view()),
     path('api/register/',CreateUserView.as_view()),
 
 ]
