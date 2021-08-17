@@ -1,6 +1,6 @@
 
 import './App.css';
-import Home from "./pages/home/Home"
+import Home from "./pages/home/home.js"
 import {
   BrowserRouter as Router,
   Switch,
@@ -20,13 +20,16 @@ function App() {
            <Switch>
                <Route exact path="/"  >
                  <Home />
+              
               </Route>
                <Route exact path="/covid_form" >
-                <Covid_form />
+                <Covid_form />        
               </Route>
+
               <Route exact path="/signup" >
                 <Signup  />
               </Route>
+              
               <Route exact path="/login" >
                 <Login />
               </Route>

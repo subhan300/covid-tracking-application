@@ -14,7 +14,11 @@ import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
+const data=[
+  {name:"adeel",id:1,result:"positive"}, {name:"salman",id:2,result:"none"},  {name:"akbar",id:3,result:"none"},
+   {name:"bilal",id:4,result:"none"},
 
+ ]
 const useRowStyles = makeStyles({
   root: {
     '& > *': {
@@ -23,14 +27,13 @@ const useRowStyles = makeStyles({
   },
 });
 
-function createData(name, calories, fat, carbs, protein, price) {
+function createData(name, id, fat, carbs, protein, price) {
   return {
     name,
-    calories,
+    id,
     fat,
-    carbs,
-    protein,
-    price,
+
+
     history: [
       { date: '2020-01-05', customerId: '11091700', amount: 300,FAT:300,protein:"joker" },
  
@@ -41,9 +44,16 @@ function createData(name, calories, fat, carbs, protein, price) {
 
 function Row(props) {
   const { row } = props;
+  const {setResult}=props
+
   const [open, setOpen] = React.useState(false);
   const classes = useRowStyles();
-
+  const pos=(id)=>{
+    
+   }
+   const neg=(id)=>{
+        console.log("negaive dekho",id)
+   }
 
   return (
     <React.Fragment>
@@ -56,7 +66,7 @@ function Row(props) {
         <TableCell component="th" scope="row">
           {row.name}
         </TableCell>
-        <TableCell align="right">{row.calories}</TableCell>
+        <TableCell align="right">{row.id}</TableCell>
         <TableCell align="right">{row.fat}</TableCell>
         <TableCell align="right">{row.carbs}</TableCell>
         <TableCell align="right">{row.protein}</TableCell>
@@ -108,10 +118,10 @@ function Row(props) {
             <br></br>
          <div className="btn_group">   
                     <div className="btn_div"><button className="btn" 
-                    // onClick={()=>{setResult("POSITIVE")}}
+                    onClick={()=>{pos(row.id)} }
                     >POSITIVE</button></div><div className="btn_div">
                       <button className="btn" 
-                      // onClick={()=>{setResult("POSITIVE")}}
+                      onClick={()=>{neg(row.id)} }
                       >
                         NEGATIVE</button></div>
           </div>
@@ -171,14 +181,19 @@ Row.propTypes = {
 
 
 export default function CollapsibleTable() {
-   
+
+
   const result=useState("none")
   console.log(result)
-  const rows = [
-    createData('suban akram', 1, result[0]),
-    createData("hassan", 1, result[0]),
+let rows= data.map((val)=>{
+ console.log(val.name)
+return(    createData(val.name,val.id,val.result))
+  })
+  //  rows = [
+  //   createData('suban akram', 1, result[0]),
+  //   createData("hassan", 1, result[0]),
   
-  ];
+  // ];
  
   return (
     <TableContainer component={Paper}>
@@ -194,9 +209,12 @@ export default function CollapsibleTable() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
-            <Row  key={row.name} row={row} />
-          ))}
+          {rows.map((row) =>{
+            console.log(row,"row")
+          return  (
+              <Row  setResult={result}  key={row.name} row={row} />
+            )
+          })}
         </TableBody>
       </Table>
     </TableContainer>
