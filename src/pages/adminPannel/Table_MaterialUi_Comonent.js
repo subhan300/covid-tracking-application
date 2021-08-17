@@ -1,4 +1,4 @@
-import React from 'react';
+import React ,{useState}from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
@@ -36,12 +36,14 @@ function createData(name, calories, fat, carbs, protein, price) {
  
     ],
   };
+
 }
 
 function Row(props) {
   const { row } = props;
   const [open, setOpen] = React.useState(false);
   const classes = useRowStyles();
+
 
   return (
     <React.Fragment>
@@ -105,7 +107,13 @@ function Row(props) {
             </div>
             <br></br>
          <div className="btn_group">   
-                    <div className="btn_div"><button className="btn">POSITIVE</button></div><div className="btn_div"><button className="btn">NEGATIVE</button></div>
+                    <div className="btn_div"><button className="btn" 
+                    // onClick={()=>{setResult("POSITIVE")}}
+                    >POSITIVE</button></div><div className="btn_div">
+                      <button className="btn" 
+                      // onClick={()=>{setResult("POSITIVE")}}
+                      >
+                        NEGATIVE</button></div>
           </div>
             {/* <Box margin={1}>
               <Typography variant="h6" gutterBottom component="div">
@@ -161,13 +169,17 @@ Row.propTypes = {
   }).isRequired,
 };
 
-const rows = [
-  createData('suban akram', 1, "negative"),
-  createData("hassan", 1, "positive"),
-
-];
 
 export default function CollapsibleTable() {
+   
+  const result=useState("none")
+  console.log(result)
+  const rows = [
+    createData('suban akram', 1, result[0]),
+    createData("hassan", 1, result[0]),
+  
+  ];
+ 
   return (
     <TableContainer component={Paper}>
       <Table aria-label="collapsible table">
@@ -183,7 +195,7 @@ export default function CollapsibleTable() {
         </TableHead>
         <TableBody>
           {rows.map((row) => (
-            <Row key={row.name} row={row} />
+            <Row  key={row.name} row={row} />
           ))}
         </TableBody>
       </Table>
