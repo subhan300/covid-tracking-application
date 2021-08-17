@@ -10,6 +10,9 @@ import {
 import Covid_form from './pages/covid-form/Covid_form.js';
 import Signup from './pages/registration/Signup';
 import Login from './pages/registration/Login';
+import Admin from './pages/adminPannel/Admin';
+import UserAccount from './pages/user_account/UserAccount';
+
 function App() {
   return (
     <div >
@@ -22,10 +25,16 @@ function App() {
                 <Covid_form />
               </Route>
               <Route exact path="/signup" >
-                <Signup />
+                <Signup  />
               </Route>
               <Route exact path="/login" >
                 <Login />
+              </Route>
+              <Route exact path="/admin" >
+                <Admin />
+              </Route>
+              <Route exact path="/userAccount" >
+                <UserAccount />
               </Route>
 
               

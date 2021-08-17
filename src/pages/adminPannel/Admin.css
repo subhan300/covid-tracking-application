@@ -1,0 +1,95 @@
+.admin{
+    padding: 40px;
+
+}
+
+.container{
+    width:80%;
+    margin:0 auto
+}
+
+
+.admin_title{
+    padding:30px 0;
+    border:2px solid grey;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+.tables{
+    margin-top: 80px;
+}
+
+
+
+.result_btn{
+    width: 100%;
+    border:2px solid red;
+    /* display: flex;
+    justify-content: space-around; */
+}
+.result_btn + .result_btn{
+    margin-left: 20px;
+}
+
+.box{
+    display: flex;
+    border:2px solid white;
+    justify-content: space-around;
+    background-color: black;
+
+}
+.col-1{
+    width: 30%;
+    border:2px solid white;
+    color: white;
+    
+}
+.col-2{
+    width: 70%;
+    border:2px solid white;
+    color: white;
+}
+.row_border{
+    border: 2px solid white;
+    padding-left:25px;
+    padding: 10px;
+    margin: 10px;
+    color: white;
+}
+.btn_group{
+    display: flex;
+    /* border:2px solid red; */
+    width: 40%;
+    justify-content: space-between;
+    margin:0 auto;
+    padding-bottom: 1rem;
+    
+}
+
+.btn{
+    border-radius: 8px;
+    padding:.8rem 2.5rem;
+    background-color:orange;
+    color: black;
+    border:2px solid orange;
+    font-weight: bold;
+    font-size: 19px;
+    border: none;
+    
+
+}
+.btn:focus{
+    background-color: lightgreen;
+    border:none;
+    color:black !important;
+
+}
+/* .btn_div{
+    border:1px solid orange;
+    border-radius: 8px;
+    padding:.8rem 2.5rem;
+} */
