@@ -1,6 +1,6 @@
 
 import './App.css';
-import Home from "./pages/home/Home"
+import Home from "./pages/home/home.js"
 import {
   BrowserRouter as Router,
   Switch,

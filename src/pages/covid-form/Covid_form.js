@@ -18,6 +18,11 @@ const SignupValidation = Yup.object().shape({
         .max(50, 'must be 50 characters or less' )
         .required('Required'),
 
+        hospital: Yup.string()
+        .max(50, 'must be 50 characters or less' )
+        .required('Required'),
+
+
         gender:  Yup.string()
         .required("Required")
         .oneOf(genderOptions),
@@ -53,7 +58,7 @@ const SignupValidation = Yup.object().shape({
     })
 
 
-const Covid_Form = () => {
+const Covid_form = () => {
 
 
 
@@ -64,6 +69,7 @@ const Covid_Form = () => {
             {
                 firstName: '',
                 lastName: '',
+                hostpita:'',
                 gender: '',
                 age: new Int16Array(),
                 bloodPressure: '',
@@ -98,6 +104,8 @@ const Covid_Form = () => {
                             />
                             <TextField errors={errors} touched={touched} label="Last Name" name="lastName"/>
                             <TextField errors={errors} touched={touched} label="age" name="age"/>
+                            <TextField errors={errors} touched={touched} label="hospital" name="hospital"/>
+                            
                             <Select 
                                 mainLabel="Blood Pressure" 
                                 optionValues={bpOptions} 
@@ -159,5 +167,5 @@ const Covid_Form = () => {
     )
 }
 
-export default Covid_Form;
+export default Covid_form;
 
