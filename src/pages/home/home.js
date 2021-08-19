@@ -2,21 +2,21 @@ import React from 'react'
 import {Link } from "react-router-dom"
 import "./home.css"
 import Header from "./header.js"
-function Home() {
+function home() {
     return (
         <div>
-            <h1>COVID TRACKING CELL</h1>
+           
           
           <div>
               < Header/>
           </div>
-               </div>
+        </div>
           
             
     )
 }
 
-export default Home
+export default home
 
 /*
  <Link to="/covid_form">GO TO COVID PAGE</Link>
