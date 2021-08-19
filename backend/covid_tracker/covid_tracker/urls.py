@@ -20,5 +20,4 @@ from django.urls import path,include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('covid/',include('covid.urls'),name= 'covid'),
-    path('auth/',obtain_auth_token)
 ]
