@@ -1,0 +1,21 @@
+.user_account{
+    /* border:2px solid blue;
+     */
+}
+.account_container{
+    width: 90%;
+    /* border:2px solid blue; */
+    margin: 0 auto;
+    padding:0 50px;
+
+}
+
+.account_title{
+    color:darkgrey
+}
+
+.account_result{
+    color:lightsalmon;
+    text-align: center;
+    margin-top: 50px;
+}
