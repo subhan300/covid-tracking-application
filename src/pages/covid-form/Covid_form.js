@@ -52,12 +52,13 @@ const Covid_form = () => {
       validationSchema={SignupValidation}
     >
       {({ errors, touched, ...formik }) => (
-        <div className="body">
-          <div className="container">
-            <h1 className="head">Covid Form</h1>
+        <div className="formic_form">
+          <div className="form_container">
+           
             {console.log("Form Values: ", formik)}
-            <Form className="censtyl">
-              <div className="box">
+            <Form className="formic_mainForm">
+            <h1 className="form_title">Covid Form</h1>
+            
                 <TextField
                   className="input"
                   errors={errors}
@@ -78,9 +79,11 @@ const Covid_form = () => {
                   errors={errors}
                   touched={touched}
                   label="age"
-                  name="age"
+                  name="&nbsp;&nbsp;&nbsp;age  "
+                  space="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
                 />
-                <Select
+                <div className="input">
+                  <Select
                   className="input"
                   mainLabel="Gender"
                   optionValues={genderOptions}
@@ -88,8 +91,10 @@ const Covid_form = () => {
                   formik={formik}
                   name="gender"
                   value={formik.values.gender}
-                />
-                <Select
+                  />
+                </div>
+                <div className="input">
+                   <Select
                   className="input"
                   mainLabel="Blood Pressure"
                   optionValues={bpOptions}
@@ -97,8 +102,9 @@ const Covid_form = () => {
                   formik={formik}
                   name="bloodPressure"
                   value={formik.values.bloodPressure}
-                />
-
+                   />
+                </div>
+                <div className="input">
                 <Select
                   className="input"
                   mainLabel="Are you alergic to anything?"
@@ -108,8 +114,9 @@ const Covid_form = () => {
                   name="allergicReaction"
                   value={formik.values.allergicReaction}
                 />
-
-                <Select
+              </div>
+              <div className="input">
+                    <Select
                   className="input"
                   mainLabel="Are you diabetic?"
                   optionValues={binaryOption}
@@ -118,7 +125,8 @@ const Covid_form = () => {
                   name="diabetic"
                   value={formik.values.diabetic}
                 />
-
+</div>                  
+<div className="input">
                 <Select
                   className="input"
                   mainLabel="Have you ever had Seizures?"
@@ -128,7 +136,8 @@ const Covid_form = () => {
                   name="seizures"
                   value={formik.values.seizures}
                 />
-
+</div>          
+<div className="input">
                 <Select
                   className="input"
                   mainLabel="Have you ever diagnosed with AIDS?"
@@ -138,11 +147,12 @@ const Covid_form = () => {
                   name="hiv"
                   value={formik.values.hiv}
                 />
-                <button className="" type="submit">
-                  Register
-                </button>
-                <button type="reset">Reset</button>
+                </div>
+              <div className="form_btn_group">
+                  <div className="form_submit--div">  <button className="form_submit" type="submit"> Register</button></div>
+                 <div className="form_reset--div">  <button className="form_reset" type="reset">Reset</button> </div>
               </div>
+            
             </Form>
           </div>
         </div>

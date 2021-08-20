@@ -1,12 +1,12 @@
 import React  from "react";
 import { useField } from "formik";
 
-export const TextField = ({errors, touched, label, ...props}) => {
+export const TextField = ({errors, touched, label,space, ...props}) => {
     const [field, meta] = useField(props);
 
     return(
         <div>
-            <label htmlFor={field.name}>{label}</label>
+            <label htmlFor={field.name}>{label}</label>&nbsp;&nbsp;{space}
             {
                 errors[field.name] && touched[field.name]  
                 ?   (<div>{errors[field.name] }</div>) 
