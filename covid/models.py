@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.db.models.deletion import CASCADE
 
 # Create your models here.
 class MedicalData(models.Model):
@@ -12,10 +11,9 @@ class MedicalData(models.Model):
         ('South City','South City'),
 
     ]
-    gender= [
-        ('Male', 'Male'),
-        ('Female','Female'),
-        ('Other','Other'),
+    fits = [
+        ('Yes','Yes'),
+        ('No','No'),
     ]
     Answer = [
         ('Yes','Yes'),
@@ -26,12 +24,16 @@ class MedicalData(models.Model):
         ('Positive','Positive'),
         ('Negative','Negative'),
     ]
+    user = models.OneToOneField(
+        User,
+        on_delete=models.CASCADE,
+        primary_key=True,
+    )
     user = models.ForeignKey(User,null=True,on_delete=models.CASCADE)
     firstName = models.CharField(max_length=50)
     lastName= models.CharField(max_length=50)
-    Age = models.IntegerField(null=True)   
     hospital = models.CharField(max_length=50,null=True,choices=hospitalChoice)
-    Gender = models.CharField(max_length=50,null=True,choices=gender)
+    Fits = models.CharField(max_length=50,null=True,choices=fits)
     Diabetes = models.CharField(max_length=50,null=True,choices=Answer)    
     Seizures = models.CharField(max_length=50,null=True,choices=Answer)    
     HIV = models.CharField(max_length=50,null=True,choices=Answer) 

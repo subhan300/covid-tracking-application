@@ -19,11 +19,12 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         # Tuple of serialized model fields (see link [2])
-        fields = ( "id","username", "password", )
+        fields = ( "id","email","username", "password")
         extra_kwargs={'password':{'write_only':True , 'required':True}}
 
 class AuthTokenSerializer(serializers.Serializer):
     """Serializer for User Authentication""" 
+    email = serializers.EmailField()
     username = serializers.CharField()
     password = serializers.CharField(
         style = {'input_type':'password'},
@@ -32,11 +33,13 @@ class AuthTokenSerializer(serializers.Serializer):
 
     def validate(self, attrs):
         """Validate And Authenticate The User"""
+        email = attrs.get('email')
         username = attrs.get('username')
         password = attrs.get('password')
 
         user = authenticate(
             request=self.context.get('request'),
+            email = email,
             username = username ,
             password = password
         )      
@@ -58,9 +61,8 @@ class MedicalDataSerializer(serializers.ModelSerializer):
             'pk',
             'firstName',
             'lastName',
-            'Age',
             'hospital',
-            'Gender',
+            'Fits',
             'Diabetes',
             'Seizures',
             'HIV',
