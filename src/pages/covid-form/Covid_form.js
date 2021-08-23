@@ -6,8 +6,8 @@ import { Select } from "./select";
 import * as Yup from "yup";
 
 const binaryOption = ["yes", "no"];
-const genderOptions = ["male", "female", "transgender"];
-const bpOptions = ["high", "low"];
+const genderOptions = ["yes", "no", "-------"];
+const bpOptions = ["Aga Khan", "Liaquat National", "Essa Lab", "South City"];
 
 const SignupValidation = Yup.object().shape({
   firstName: Yup.string()
@@ -54,57 +54,56 @@ const Covid_form = () => {
       {({ errors, touched, ...formik }) => (
         <div className="formic_form">
           <div className="form_container">
-           
             {console.log("Form Values: ", formik)}
             <Form className="formic_mainForm">
-            <h1 className="form_title">Covid Form</h1>
-            
-                <TextField
-                  className="input"
-                  errors={errors}
-                  touched={touched}
-                  label="First Name"
-                  name="firstName"
-                />
+              <h1 className="form_title">Covid Form</h1>
 
-                <TextField
+              <TextField
+                className="input"
+                errors={errors}
+                touched={touched}
+                label="First Name"
+                name="firstName"
+              />
+
+              <TextField
+                className="input"
+                errors={errors}
+                touched={touched}
+                label="Last Name"
+                name="lastName"
+              />
+              {/* <TextField
+                className="input"
+                errors={errors}
+                touched={touched}
+                label="age"
+                name="&nbsp;&nbsp;&nbsp;age  "
+                space="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+              /> */}
+              <div className="input">
+                <Select
                   className="input"
-                  errors={errors}
-                  touched={touched}
-                  label="Last Name"
-                  name="lastName"
-                />
-                <TextField
-                  className="input"
-                  errors={errors}
-                  touched={touched}
-                  label="age"
-                  name="&nbsp;&nbsp;&nbsp;age  "
-                  space="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
-                />
-                <div className="input">
-                  <Select
-                  className="input"
-                  mainLabel="Gender"
-                  optionValues={genderOptions}
-                  optionLabels={genderOptions}
+                  mainLabel="Fits"
+                  optionValues={binaryOption}
+                  optionLabels={binaryOption}
                   formik={formik}
                   name="gender"
                   value={formik.values.gender}
-                  />
-                </div>
-                <div className="input">
-                   <Select
+                />
+              </div>
+              <div className="input">
+                <Select
                   className="input"
-                  mainLabel="Blood Pressure"
+                  mainLabel="Hospital"
                   optionValues={bpOptions}
                   optionLabels={bpOptions}
                   formik={formik}
                   name="bloodPressure"
                   value={formik.values.bloodPressure}
-                   />
-                </div>
-                <div className="input">
+                />
+              </div>
+              {/* <div className="input">
                 <Select
                   className="input"
                   mainLabel="Are you alergic to anything?"
@@ -114,9 +113,9 @@ const Covid_form = () => {
                   name="allergicReaction"
                   value={formik.values.allergicReaction}
                 />
-              </div>
+              </div> */}
               <div className="input">
-                    <Select
+                <Select
                   className="input"
                   mainLabel="Are you diabetic?"
                   optionValues={binaryOption}
@@ -125,8 +124,8 @@ const Covid_form = () => {
                   name="diabetic"
                   value={formik.values.diabetic}
                 />
-</div>                  
-<div className="input">
+              </div>
+              <div className="input">
                 <Select
                   className="input"
                   mainLabel="Have you ever had Seizures?"
@@ -136,8 +135,8 @@ const Covid_form = () => {
                   name="seizures"
                   value={formik.values.seizures}
                 />
-</div>          
-<div className="input">
+              </div>
+              <div className="input">
                 <Select
                   className="input"
                   mainLabel="Have you ever diagnosed with AIDS?"
@@ -147,12 +146,22 @@ const Covid_form = () => {
                   name="hiv"
                   value={formik.values.hiv}
                 />
-                </div>
-              <div className="form_btn_group">
-                  <div className="form_submit--div">  <button className="form_submit" type="submit"> Register</button></div>
-                 <div className="form_reset--div">  <button className="form_reset" type="reset">Reset</button> </div>
               </div>
-            
+              <div className="form_btn_group">
+                <div className="form_submit--div">
+                  {" "}
+                  <button className="form_submit" type="submit">
+                    {" "}
+                    Register
+                  </button>
+                </div>
+                <div className="form_reset--div">
+                  {" "}
+                  <button className="form_reset" type="reset">
+                    Reset
+                  </button>{" "}
+                </div>
+              </div>
             </Form>
           </div>
         </div>
