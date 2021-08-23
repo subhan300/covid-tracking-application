@@ -20,7 +20,7 @@ function Signup() {
         ,
         body:JSON.stringify(data),
       })
-    //   .then(handleErrors)
+      .then((error)=>{console.log(error,"errors")})
         .then(()=>{
                     //  setUserCredentials(details)
                  
