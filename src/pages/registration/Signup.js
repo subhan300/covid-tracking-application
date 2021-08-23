@@ -1,13 +1,42 @@
 import React,{useState} from 'react'
 import "./Signup.css"
 function Signup() {
-    let [userame,setUserName]=useState("");
+    let [username,setUserName]=useState("");
     let[password,setPassword]=useState("")
-    console.log(userame)
-   const submit=(e)=>{
+    let[email,setEmail]=useState("")
+    // console.log(userame)
+   const submit=async(e)=>{
        e.preventDefault();
-       const data={username:userame,password}
+       const data={username,password,email}
        console.log("data",data)
+
+       await   fetch(`https://covid-tracker-app-19.herokuapp.com/covid/create`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "token":"694371ebc53cd0190bce48d0817c4f14d7f77503"
+        }
+       
+        ,
+        body:JSON.stringify(data),
+      })
+    //   .then(handleErrors)
+        .then(()=>{
+                    //  setUserCredentials(details)
+                 
+                    
+                  
+                    console.log("start")
+                    //  history.push("/covid_form")
+                    
+                    }
+                     
+                     )
+        
+         .catch((error) => {
+                     
+                    console.log(error.message)
+      });
    }
     return (
         <div class="SignUp">
@@ -16,7 +45,11 @@ function Signup() {
            </div>
            <div class="inputBox">
            <h4>Username</h4>
-           <input type="text" value={userame}  placeholder="Name" onChange={(e)=>{setUserName(e.target.value)}}></input>
+           <input type="text" value={username}  placeholder="Name" onChange={(e)=>{setUserName(e.target.value)}}></input>
+           </div>
+           <div class="inputBox">
+           <h4>Username</h4>
+           <input type="email" value={email}  placeholder="Name" onChange={(e)=>{setEmail(e.target.value)}}></input>
            </div>
            <div class="inputBox">
            <h4>Password</h4>
