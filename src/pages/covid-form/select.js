@@ -1,24 +1,33 @@
 import React  from "react";
+import { ErrorMessage, useField } from 'formik';
+import 'bootstrap/dist/css/bootstrap.min.css'
+export const Select = ({mainLabel, ...props}) => {
+    const [field, meta] = useField(props);
 
-export const Select = ({mainLabel, optionValues, optionLabels, formik, name,value, ...props}) => {
-
-    console.log("optionValues:", optionValues)
-    console.log("optionLabels:", optionLabels)
+    return(    
     
-
-    return(    <div>
-     {mainLabel}   
-    <select
-        name={name}
-        value={value}
-        onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
-
-        className='select_field'
-    >
-        <option className="options_field" value="" label="Choose an option" />
-        {optionLabels.map( (label, i) =>  <option key={label} value={optionValues[i]} label={label} />)}        
-    </select>
+    <div className="mb-2">
+        <label className="form-label-lg" for="inputState">{mainLabel}</label> 
+        <div class="col-sm-10">
+            <select
+                className={`form-select shadow-none ${meta.touched && meta.error && 'is-invalid'}`} 
+                {...field} {...props}
+                name={field.name}
+                value={field.value}
+                onChange={props.formik.handleChange}
+                onBlur={props.formik.handleBlur}
+            >
+                <option value="" label="Choose an option" />
+              {/*mapping the list of options provided as optionsValues and OptionLabels insid select input*/}
+                {
+                    props
+                    .optionLabels
+                    .map( (label, i) =>  <option key={label} value={props.optionValues[i]} label={label} />)
+                }        
+           </select>
+        </div>
+        {/*writing the validation errod messages under the respecrtive options*/}
+        <ErrorMessage component="div" name={field.name} className="text-danger" />
     </div>
 
     )

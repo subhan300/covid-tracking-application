@@ -5,8 +5,17 @@
     padding: 5px;
     box-sizing: border-box;
 }
+.signup_container{
+    width: 80%;
+    margin: 0 auto;
+    /* border:2px solid red; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 .SignUp {
-    margin-left: 500px;
+    /* margin-left: 500px; */
+
     margin-top: 50px;
     padding: 75px 50px;
     background: rgb(255, 255, 255);
@@ -14,6 +23,8 @@
     max-width: 500px;
     align-items: center;
     justify-content: center;
+    /* border:2px solid blue */
+
 }
 .titleText{
     color: black;
