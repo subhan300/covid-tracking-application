@@ -41,7 +41,7 @@ function Signup() {
        
        onSubmit={(values, { setSubmitting }) => {
          setTimeout(async() => {
-        console.log(values,"values singup")
+        console.log("signup successfully")
            await   fetch(`https://covid-tracker-app-19.herokuapp.com/covid/create/`, {
             method: "POST",
             headers: {
@@ -58,7 +58,7 @@ function Signup() {
                      
                         
                       
-                        console.log("start")
+                        
                          history.push("/login")
                         
                         }
@@ -117,9 +117,9 @@ function Signup() {
          {errors.password && touched.password && errors.password}
            </div>
            <div class="inputBox">
-           <input type="submit"  disabled={isSubmitting}>
-             Submit
-           </input>
+           <button type="submit"  disabled={isSubmitting}>
+               Submit
+           </button>
            {/* <input type="submit" onClick={submit} value="Sign Up"></input> */}
 
            </div>
