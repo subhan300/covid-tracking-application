@@ -9,7 +9,11 @@ body{
 }
 /* .banner::after{
   content:"";
+<<<<<<< HEAD
  
+=======
+  background:url("https://www.google.com/search?q=covid+images&sxsrf=ALeKk00p5Egw1U2ieVlrznnlPbOxGHZ24w:1629704496317&source=lnms&tbm=isch&sa=X&ved=2ahUKEwj1v92s0sbyAhUDoVwKHRjwAmAQ_AUoAXoECAEQAw&biw=1348&bih=606#imgrc=5RCBI5jrMsjPEM");
+>>>>>>> 0a28a3b971fb9749a3c849f509b9d040583bcde7
   background-repeat: no-repeat;
   background-size: cover;
   image-rendering: auto;
