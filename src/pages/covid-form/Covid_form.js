@@ -1,29 +1,30 @@
-import React from 'react'
+import React,{useState} from 'react'
 import {Formik, Form} from "formik"
 import { TextField } from './TextField'
 import {Select} from './select'
 import * as Yup from 'yup'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import {useHistory} from "react-router-dom"
 import "./Covid_form.css"
-const binaryOption = ["yes", "no"];  //variables for form select element with only "Yes" or "No" options 
+const binaryOption = ["Yes", "No"];  //variables for form select element with only "Yes" or "No" options 
 const bpOptions = ["high", "low"]   //variables for bloodpressure select element with "high" or "low" options 
-const hospitals = ["Agha Khan", "Liaquat National", "Essa Lab", "South City"] ////variables for hospital select element with "high" or "low" options 
+const hospital = ['Aga Khan', "Liaquat National", "Essa Lab", "South City"] ////variables for hospital select element with "high" or "low" options 
 
 
 //defining validation schema for formik registration form
 const SignupValidation = Yup.object().shape({
         
-        FirstName: Yup.string()
+        firstName: Yup.string()
         .max(50, 'must be 50 characters or less' )
         .required('Required'),
 
-        LastName: Yup.string()
+        lastName: Yup.string()
         .max(50, 'must be 50 characters or less' )
         .required('Required'),
 
-        Hospital:  Yup.string()
+        hospital:  Yup.string()
         .required("Required")
-        .oneOf(hospitals),
+        .oneOf(hospital),
 
         Fits: Yup.string()
        .required('Required')
@@ -44,8 +45,11 @@ const SignupValidation = Yup.object().shape({
 
 
 const Covid_form = () => {
-  let token=localStorage.getItem("token")
+    const history = useHistory();
+  
+ let token=localStorage.getItem("token")
  console.log(token)
+ 
     return (
     <div className="container mt-3">
         <div className="row">
@@ -55,9 +59,9 @@ const Covid_form = () => {
                     initialValues=
                     {
                         {
-                            FirstName: '',
+                            firstName: '',
                             LastName: '',
-                            Hospital:'',
+                            hospital:'',
                             Fits:'',
                             Diabetes:'',
                             Seizures:'',
@@ -65,24 +69,75 @@ const Covid_form = () => {
                         }
                     }
                     validationSchema={SignupValidation}
-                >
+                      
+                      
+                      
+                      
+                    onSubmit={(values, { setSubmitting }) => {
+                        setTimeout(async() => {
+                    //    console.log(values,"values singup")
+                    
+                       await   fetch(`https://covid-tracker-app-19.herokuapp.com/covid/record/`, {
+                         headers: {
+                             "Content-Type": "application/json",
+                             "Authorization":`token ${token}`
+                              
+                           },
+                      method: "POST",
+                          
+                           
+                           body:JSON.stringify(values),
+                         })
+                        
+                           .then(async(res)=>{
+                            alert("successfully done !")
+                             const response=await res.json()
+                             history.push("/userAccount")
+
+                            
+                            
+                             
+                                    
+                                       
+                                     
+                                     
+                                       
+
+                                       }   )
+            
+             .catch((error) => {
+                         
+                        console.log(error.message)
+          });
+           setSubmitting(false);
+         }, 400);
+       }}
+                      
+                      
+                      
+                      
+                      
+                      
+                      >
                     {
-                        ({ errors, touched, ...formik }) => 
+                        ({    handleSubmit,
+                            isSubmitting,errors, touched, ...formik }) => 
+
                         (
                             <div>
                                 <h1 className="my-4 font-weight-bold .display-4" >Covid Form</h1>
-                                <Form>    
-                                    <TextField className="space_height" label="First Name" name="FirstName" type="text"/>
+                                <Form  onSubmit={handleSubmit}>    
+                                    <TextField className="space_height" label="First Name" name="firstName" type="text"/>
                  
-                                    <TextField className="space_height"label="Last Name" name="LastName" type="text"/>
+                                    <TextField className="space_height"label="Last Name" name="lastName" type="text"/>
 
                                     <Select className="space_height"
                                         mainLabel="Hospital" 
-                                        optionValues={hospitals} 
-                                        optionLabels={hospitals} 
+                                        optionValues={hospital} 
+                                        optionLabels={hospital} 
                                         formik={formik} 
-                                        name="Hospital"
-                                        value={formik.values.Hospital}
+                                        name="hospital"
+                                        value={formik.values.hospital}
                                     />
 
                                     <Select className="space_height"
@@ -122,7 +177,10 @@ const Covid_form = () => {
                                     />
                                    <br />
                                     <div className="col-12">
-                                        <button type="submit" class="btn " >Sign in</button>
+                                        {/* <button type="submit" class="btn " >Sign in</button> */}
+                                        <button type="submit" className="btn" disabled={isSubmitting}>
+                                                 Submit
+                                     </button>
                                     </div>
                                     <br />
 

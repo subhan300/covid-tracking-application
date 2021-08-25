@@ -1,7 +1,22 @@
-import React from "react";
+import React ,{useEffect,useState}from "react";
 import {Link} from "react-router-dom"
 import "./home.css"
 const Header = () =>{
+let [currentToken,setCurrentToken]=useState("")
+
+useEffect(() => {
+    
+    return () => {
+
+        let t= localStorage.getItem("token")
+       
+        return (setCurrentToken(t) 
+        )
+
+    }
+}, [])
+
+    console.log(localStorage.getItem("token"),"tokn")
 return <div className="banner">
         <div><h1 className="banner_container_main_title"  >COVID-19 &nbsp; APPLICATION</h1></div>
        <div className="banner_container">
@@ -17,9 +32,19 @@ Most people who fall sick with COVID-19 will experience mild to moderate symptom
                   <div class="covid_btn-group">
               <Link to="/signup"><div className="covid_btn" type="button">Register</div></Link>
               <Link to="/login"> <div className="covid_btn" type="button">Log In</div></Link>
+             
  
            </div>
-
+           <br />
+         
+           <div class="covid_btn-group">
+                  {currentToken?<Link to="/userAccount"><div  className="covid_btn" type="button">result</div></Link>:<div></div>}
+               
+                 <button className="covid_btn" type="button" style={{width:"50%"}} onClick={()=>{setCurrentToken(localStorage.removeItem("token"))}}>Sign out</button>
+             
+ 
+           </div>
+          
 
              </div>
             

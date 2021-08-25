@@ -117,9 +117,9 @@ function Signup() {
          {errors.password && touched.password && errors.password}
            </div>
            <div class="inputBox">
-           <button type="submit"  disabled={isSubmitting}>
+           <input type="submit"  disabled={isSubmitting}>
              Submit
-           </button>
+           </input>
            {/* <input type="submit" onClick={submit} value="Sign Up"></input> */}
 
            </div>

@@ -50,7 +50,7 @@
     width: 100%;
     margin-bottom: 10px;
 }
-.Login .inputBox input{
+.Login .inputBox button{
     width: 100%;
     border: 1px solid #555;
     color: #111;
@@ -60,7 +60,7 @@
     resize: none;
 }
 
-.Login .inputBox input[type="submit"]{
+.Login .inputBox button[type="submit"]{
     font-size: 1em;
     color: white;
     background: #ff0101;
@@ -75,6 +75,6 @@
     cursor: pointer;
 }
 
-.Login .inputBox input[type="submit"]:hover{
+.Login .inputBox button[type="submit"]:hover{
     letter-spacing: 5px;
 }

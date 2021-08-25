@@ -1,9 +1,11 @@
 import React,{useState} from 'react'
 import "./Login.css"
 import {Formik, Form} from "formik"
+import {useHistory} from "react-router-dom"
 function Login() {
     let [token,setToken]=useState("");
-
+    const history=useHistory()
+  console.log(token ,"token")
 
    
 
@@ -37,8 +39,8 @@ function Login() {
        
        onSubmit={(values, { setSubmitting }) => {
          setTimeout(async() => {
-        console.log(values,"values singup")
-        alert(JSON.stringify(values))
+        // console.log(values,"values singup")
+     
         await   fetch(`https://covid-tracker-app-19.herokuapp.com/covid/token/`, {
           headers: {
               "Content-Type": "application/json",
@@ -54,7 +56,10 @@ function Login() {
                     
               const response=await res.json()
               setToken(response.token)
-              localStorage.setItem("token",token);
+              console.log(token)
+              localStorage.setItem("token",response.token);
+              alert("login successfully")
+              history.push("/covid_form")
               
                      
                         
@@ -117,7 +122,7 @@ function Login() {
          {errors.password && touched.password && errors.password}
            </div>
            <div class="inputBox">
-           <button type="submit"  disabled={isSubmitting}>
+           <button type="submit"   disabled={isSubmitting}>
              Submit
            </button>
            {/* <input type="submit" onClick={submit} value="Sign Up"></input> */}
