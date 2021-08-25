@@ -1,4 +1,4 @@
-
+import React ,{useState} from "react"
 import './App.css';
 import Home from "./pages/home/home.js"
 import {
@@ -6,6 +6,7 @@ import {
   Switch,
   Route,
   Link
+  
 } from "react-router-dom";
 import Covid_form from './pages/covid-form/Covid_form.js';
 import Signup from './pages/registration/Signup';
@@ -14,12 +15,14 @@ import Login from './pages/registration/Login';
 import UserAccount from './pages/user_account/UserAccount';
 
 function App() {
+let currentToken=useState("")
+console.log(currentToken[0],currentToken[1])
   return (
     <div >
        <Router>
            <Switch>
                <Route exact path="/"  >
-                 <Home />
+                 <Home Token={currentToken[0]} />
               
               </Route>
                <Route exact path="/covid_form" >
@@ -31,11 +34,11 @@ function App() {
               </Route>
               
               <Route exact path="/login" >
-                <Login />
+                <Login  Token={currentToken[1]} />
               </Route>
              
               <Route exact path="/userAccount" >
-                <UserAccount />
+                <UserAccount Token={currentToken[0]} />
               </Route>
 
               
