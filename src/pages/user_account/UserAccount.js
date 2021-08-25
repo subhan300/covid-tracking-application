@@ -5,12 +5,14 @@ let [id,SetId]=useState("")
 let [result,setResult]=useState(".....")
 console.log(result)
 let token=localStorage.getItem("token")
+let ID=localStorage.getItem("id")
+console.log(ID,"IDS")
 console.log(token,"token")
     const CheckResult=(e)=>{
         e.preventDefault();
         
-        console.log(token,id,"id")
-       return fetch(`https://covid-tracker-app-19.herokuapp.com/covid/result/${id}`,{
+      
+       return fetch(`https://covid-tracker-app-19.herokuapp.com/covid/result/${ID}`,{
         headers: {
             "Content-Type": "application/json",
             "Authorization":`token ${token}`
@@ -23,7 +25,7 @@ console.log(token,"token")
                 }
                   
                   
-                  )
+                  ).catch(error=>{console.log(error,"eroro")})
        
     }
 
@@ -36,7 +38,7 @@ console.log(token,"token")
               <div className="account_result">
 
                   <form onSubmit={CheckResult}>
-                       <input onChange={(e)=>{SetId(e.currentTarget.value)}}  value={id}   type="number" required placeholder="enter your id "></input>
+                       <input   value={ID}   type="number" required placeholder="enter your id "></input>
                         <button type="submit" >Check Result</button>
                   </form>
     

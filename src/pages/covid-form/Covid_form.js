@@ -92,6 +92,9 @@ const Covid_form = () => {
                            .then(async(res)=>{
                             alert("successfully done !")
                              const response=await res.json()
+                             console.log(response,"form res")
+                             localStorage.setItem("id",response.pk)
+                             alert(JSON.stringify(response))
                              history.push("/userAccount")
 
                             

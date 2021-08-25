@@ -20,7 +20,7 @@ function Signup() {
            </div>
             
            <Formik
-       initialValues={{ email: '', password: '' ,userNAME:''}}
+       initialValues={{ email: '', password: '' ,username:''}}
        validate={values => {
          const errors = {};
          if (!values.email) {
@@ -30,7 +30,7 @@ function Signup() {
          ) {
            errors.email = 'Invalid email address';
          }
-         else if(!values.userNAME){
+         else if(!values.username){
            errors.userNAME="Required"
          }
          else if(!values.password){
@@ -52,8 +52,13 @@ function Signup() {
             ,
             body:JSON.stringify(values),
           })
-          .then((error)=>{console.log(error,"errors yaha hai")})
-            .then(()=>{
+     
+            .then(async(res)=>{
+              let response=await res.json()
+              console.log(response.id,"id")
+              alert(response.id)
+              // localStorage.setItem("id",response.id)
+
                         //  setUserCredentials(details)
                      
                         
@@ -86,15 +91,15 @@ function Signup() {
          <form onSubmit={handleSubmit}>
 <div class="inputBox">
            <h4>Username</h4>
-           <input type="text" name="userNAME"
+           <input type="text" name="username"
              onChange={handleChange}
              onBlur={handleBlur}
-             value={values.userNAME}
+             value={values.username}
 
                
            
            ></input>
-            {errors.userNAME && touched.userNAME && errors.userNAME}
+            {errors.username && touched.username && errors.username}
            </div>
            <div class="inputBox">
            <h4>Email</h4>
@@ -118,7 +123,7 @@ function Signup() {
            </div>
            <div class="inputBox">
            <button type="submit"  disabled={isSubmitting}>
-               Submit
+            Submit
            </button>
            {/* <input type="submit" onClick={submit} value="Sign Up"></input> */}
 
