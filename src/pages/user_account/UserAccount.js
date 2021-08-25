@@ -10,7 +10,7 @@ console.log(token,"token")
         e.preventDefault();
         
         console.log(token,id,"id")
-       return fetch(`https://covid-tracker-app-19.herokuapp.com/covid/result/${13}`,{
+       return fetch(`https://covid-tracker-app-19.herokuapp.com/covid/result/${id}`,{
         headers: {
             "Content-Type": "application/json",
             "Authorization":`token ${token}`
