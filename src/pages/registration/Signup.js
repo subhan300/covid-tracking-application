@@ -4,35 +4,13 @@ import "./Signup.css"
 
 import {Formik, Form} from "formik"
 
-import * as Yup from 'yup'
-const SignupValidation = Yup.object().shape({
-        
-  FirstName: Yup.string()
-  .max(50, 'must be 50 characters or less' )
-  .required('Required'),
-
-
-})
-
-
-
-
 
 
 
 function Signup() {
-    let [username,setUserName]=useState("");
-    let[password,setPassword]=useState("")
-    let[email,setEmail]=useState("")
-    const history = useHistory();
-    // console.log(userame)
-   const submit=async(e)=>{
-      //  e.preventDefault();
-      //  const data={email,username,password}
-      //  console.log("data",data)
-
     
-   }
+    const history = useHistory();
+  
     return (
       <div className="signup_container">
         <div class="SignUp">
@@ -55,9 +33,9 @@ function Signup() {
          else if(!values.userNAME){
            errors.userNAME="Required"
          }
-        //  else if(!values.password){
-        //   errors.password="Required"
-        // }
+         else if(!values.password){
+          errors.password="Required"
+        }
          return errors;
        }}
        

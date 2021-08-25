@@ -1,71 +1,132 @@
 import React,{useState} from 'react'
 import "./Login.css"
+import {Formik, Form} from "formik"
 function Login() {
-    let [username,setUserName]=useState("");
-    let[password,setPassword]=useState("");
-    let[email,setEmail]=useState("")
+    let [token,setToken]=useState("");
+
 
    
 
-    const submit=async(e)=>{
-        e.preventDefault();
-        const data={username,password,email}
-        // console.log("data",data)
-
- 
-        await   fetch(`https://covid-tracker-app-19.herokuapp.com/covid/token/`, {
-            headers: {
-                "Content-Type": "application/json",
-              
-              },
-         method: "POST",
-         body:JSON.stringify(data),
-        
-        
-       
-       })
-       
-         .then(async(res)=>{
-                     //  setUserCredentials(details)
-                  
-                     
-                     console.log("poimt")
-                     const response =await res.json();
-                     console.log(response)
-                    //   history.push("/covid_form")
-                     
-                     }
-                      
-                      )
-         
-          .catch((error) => {
-                      
-                     console.log(error.message,"bottt error")
-       });
-    }
+    
+    
     return (
       <div className="login_container">
          <div class="Login">
             <div class="title">
             <h2  class="titleText"><span>L</span>ogin</h2>
             </div>
-            <div class="inputBox">
-            <h4>Username</h4>
-            <input type="text" value={username}  placeholder="Name" onChange={(e)=>{setUserName(e.target.value)}}></input>
-            </div>
+            <Formik
+       initialValues={{ email: '', password: '' ,username:''}}
+       validate={values => {
+         const errors = {};
+         if (!values.email) {
+           errors.email = 'Required';
+         } else if (
+           !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
+         ) {
+           errors.email = 'Invalid email address';
+         }
+         else if(!values.username){
+           errors.username="Required"
+         }
+         else if(!values.password){
+          errors.password="Required"
+        }
+         return errors;
+       }}
+       
+       onSubmit={(values, { setSubmitting }) => {
+         setTimeout(async() => {
+        console.log(values,"values singup")
+        alert(JSON.stringify(values))
+        await   fetch(`https://covid-tracker-app-19.herokuapp.com/covid/token/`, {
+          headers: {
+              "Content-Type": "application/json",
+            
+            },
+       method: "POST",
+           
+            
+            body:JSON.stringify(values),
+          })
          
-            <div class="inputBox">
-           <h4>Email</h4>
-           <input type="email" value={email}  placeholder="Email" onChange={(e)=>{setEmail(e.target.value)}}></input>
-           </div>
-            <div class="inputBox">
-            <h4>Password</h4>
-            <input type="password" value={password}  placeholder="Password" onChange={(e)=>{setPassword(e.target.value)}}></input>
-            </div>
-            <div class="inputBox">
-            <input type="submit" onClick={submit} value="Login"></input>
+            .then(async(res)=>{
+                    
+              const response=await res.json()
+              setToken(response.token)
+              localStorage.setItem("token",token);
+              
+                     
+                        
+                      
+                      
+                        
+                        }
+                         
+                         )
+            
+             .catch((error) => {
+                         
+                        console.log(error.message)
+          });
+           setSubmitting(false);
+         }, 400);
+       }}
+     >
+       {({
+         values,
+         errors,
+         touched,
+         handleChange,
+         handleBlur,
+         handleSubmit,
+         isSubmitting,
+         /* and other goodies */
+       }) => (
+         <form onSubmit={handleSubmit}>
+<div class="inputBox">
+           <h4>Username</h4>
+           <input type="text" name="username"
+             onChange={handleChange}
+             onBlur={handleBlur}
+             value={values.username}
 
-            </div>
+               
+           
+           ></input>
+            {errors.username && touched.username && errors.username}
+           </div>
+           <div class="inputBox">
+           <h4>Email</h4>
+           <input required type="email" name="email"
+               onChange={handleChange}
+               onBlur={handleBlur}
+               value={values.email}
+           ></input>
+             {errors.email && touched.email && errors.email}
+           </div>
+           <div class="inputBox">
+           <h4>Password</h4>
+           <input 
+             type="password"
+             name="password"
+             onChange={handleChange}
+             onBlur={handleBlur}
+             value={values.password}
+         type="password" placeholder="Password" ></input>
+         {errors.password && touched.password && errors.password}
+           </div>
+           <div class="inputBox">
+           <button type="submit"  disabled={isSubmitting}>
+             Submit
+           </button>
+           {/* <input type="submit" onClick={submit} value="Sign Up"></input> */}
+
+           </div>
+
+</form>)}
+</Formik>
+       
             
          </div>
         </div>

@@ -44,6 +44,8 @@ const SignupValidation = Yup.object().shape({
 
 
 const Covid_form = () => {
+  let token=localStorage.getItem("token")
+ console.log(token)
     return (
     <div className="container mt-3">
         <div className="row">
@@ -66,8 +68,6 @@ const Covid_form = () => {
                 >
                     {
                         ({ errors, touched, ...formik }) => 
-                      {
-                          console.log(formik.values)
                         (
                             <div>
                                 <h1 className="my-4 font-weight-bold .display-4" >Covid Form</h1>
@@ -132,7 +132,7 @@ const Covid_form = () => {
                                 </Form>
                             </div>
                         )
-                      }
+                      
                     }  
                 </Formik>
             </div>
