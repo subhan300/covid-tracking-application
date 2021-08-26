@@ -189,6 +189,15 @@ Link{
 }
 
 
+@media screen and (max-width:850px) {
+  .banner::after,.home_full{
+    /* background-color: lightgreen; */
+  
+   background-image:none !important;
+   /* background-color: lightgray; */
+
+  }
+}
 
 .navbar{
   /* border:2px solid red; */

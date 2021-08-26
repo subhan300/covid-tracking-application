@@ -6,12 +6,12 @@ import Navbar from "./Navbar"
 function home({Token}) {
   console.log(Token,'App.js')
     return (
-        <div>
+        <div className="home_full" >
            {/* <Navbar /> */}
           
-          <div>
-              < Header Token={Token} />
-          </div>
+      
+              < Header className="home_full" Token={Token} />
+          
         </div>
           
             
