@@ -16,7 +16,7 @@ useEffect(() => {
     }
 }, [])
 
-    console.log(localStorage.getItem("token"),"tokn")
+    // console.log(localStorage.getItem("token"),"tokn")
 return <div className="banner">
         <div><h1 className="banner_container_main_title"  >COVID-19 &nbsp; APPLICATION</h1></div>
        <div className="banner_container">
@@ -40,7 +40,7 @@ Most people who fall sick with COVID-19 will experience mild to moderate symptom
            <div class="covid_btn-group">
                   {currentToken?<Link to="/userAccount"><div  className="covid_btn" type="button">result</div></Link>:<div></div>}
                
-                 <button className="covid_btn" type="button" style={{width:"50%"}} onClick={()=>{setCurrentToken(localStorage.removeItem("token"))}}>Sign out</button>
+                 {/* <button className="covid_btn" type="button" style={{width:"50%"}} >Sign out</button> */}
              
  
            </div>
@@ -52,7 +52,7 @@ Most people who fall sick with COVID-19 will experience mild to moderate symptom
              
                
            </div>
-           <div className="banner_container_content_right"><img src="https://images.unsplash.com/photo-1584118624012-df056829fbd0?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlydXN8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"></img></div>
+           {/* <div className="banner_container_content_right"><img src="https://images.unsplash.com/photo-1584118624012-df056829fbd0?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlydXN8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"></img></div> */}
          
        </div>
        

@@ -15,8 +15,8 @@ import Login from './pages/registration/Login';
 import UserAccount from './pages/user_account/UserAccount';
 
 function App() {
-let currentToken=useState("")
-console.log(currentToken[0],currentToken[1])
+let currentToken=useState("subhan tokrn")
+// console.log(currentToken[1))
   return (
     <div >
        <Router>
@@ -30,11 +30,11 @@ console.log(currentToken[0],currentToken[1])
               </Route>
 
               <Route exact path="/signup" >
-                <Signup  />
+                <Signup   />
               </Route>
               
               <Route exact path="/login" >
-                <Login  Token={currentToken[1]} />
+                <Login  Token={currentToken} />
               </Route>
              
               <Route exact path="/userAccount" >

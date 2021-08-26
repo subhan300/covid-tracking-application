@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 import {useHistory} from "react-router-dom"
 import "./Signup.css"
-
+import Navbar from "../home/Navbar"
 import {Formik, Form} from "formik"
 
 
@@ -12,7 +12,9 @@ function Signup() {
     const history = useHistory();
   
     return (
-      <div className="signup_container">
+    <>
+    <Navbar />
+  <div className="signup_container">
         <div class="SignUp">
           
            <div class="title">
@@ -55,8 +57,8 @@ function Signup() {
      
             .then(async(res)=>{
               let response=await res.json()
-              console.log(response.id,"id")
-              alert(response.id)
+              // console.log(response.id,"id")
+              // alert(response.id)
               // localStorage.setItem("id",response.id)
 
                         //  setUserCredentials(details)
@@ -140,6 +142,9 @@ function Signup() {
            </div>
            
         </div>
+
+
+    </>
     )
 }
 

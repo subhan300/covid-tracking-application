@@ -1,6 +1,8 @@
 import React,{useState} from 'react'
 import {Formik, Form} from "formik"
 import { TextField } from './TextField'
+import Navbar from "../home/Navbar" 
+
 import {Select} from './select'
 import * as Yup from 'yup'
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -9,7 +11,6 @@ import "./Covid_form.css"
 const binaryOption = ["Yes", "No"];  //variables for form select element with only "Yes" or "No" options 
 const bpOptions = ["high", "low"]   //variables for bloodpressure select element with "high" or "low" options 
 const hospital = ['Aga Khan', "Liaquat National", "Essa Lab", "South City"] ////variables for hospital select element with "high" or "low" options 
-
 
 //defining validation schema for formik registration form
 const SignupValidation = Yup.object().shape({
@@ -51,7 +52,12 @@ const Covid_form = () => {
  console.log(token)
  
     return (
+ <>
+
+
+<Navbar />
     <div className="container mt-3">
+         
         <div className="row">
             <div className="col-md-5">
                 <Formik
@@ -199,6 +205,20 @@ const Covid_form = () => {
             </div>
         </div>
     </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+ </>
     )
 }
 

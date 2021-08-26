@@ -7,13 +7,9 @@
 body{
     font-family: 'Montserrat', sans-serif;
 }
-/* .banner::after{
+.banner::after{
   content:"";
-<<<<<<< HEAD
- 
-=======
-  background:url("https://www.google.com/search?q=covid+images&sxsrf=ALeKk00p5Egw1U2ieVlrznnlPbOxGHZ24w:1629704496317&source=lnms&tbm=isch&sa=X&ved=2ahUKEwj1v92s0sbyAhUDoVwKHRjwAmAQ_AUoAXoECAEQAw&biw=1348&bih=606#imgrc=5RCBI5jrMsjPEM");
->>>>>>> 0a28a3b971fb9749a3c849f509b9d040583bcde7
+  background-image: url("../../images/bg_image.jpeg");
   background-repeat: no-repeat;
   background-size: cover;
   image-rendering: auto;
@@ -25,17 +21,17 @@ body{
   position:absolute;
   top: 0;
   z-index: -1;
-  opacity: .3;
+  opacity: .8;
 
 }
 .banner{
   position: relative;
 
 height: 100vh;
-; */
 
 
-/* }
+
+}
 .banner-content {
   width: 97% !important;
   margin: 0 auto;
@@ -46,14 +42,15 @@ height: 100vh;
     justify-content: flex-end !important;
  
     width: 60%;
+    /* height: 100vh; */
 
   
 }
-.container {
+/* .container {
 
 font-size: 2.2rem !important; */
 
-/* } */
+
 /* .btn-group {
 
 display: flex;
@@ -112,7 +109,7 @@ min-width: 300px;
  }
  .banner_container_main_title{
    font-size:52px;
-   color: orange;
+   color: orangered;;
    /* border:2px solid orangered; */
    text-align: center;
    padding:2rem;
@@ -166,11 +163,14 @@ Link{
   
     width: 90%;
     margin: 0 auto;
-    border:2px solid red;
+    /* border:2px solid red; */
     text-align: center;
     flex-direction: column;
+
   }
-  .banner_container_content{border:2px solid red;display: flex;
+  .banner_container_content{
+    /* border:2px solid red; */
+    display: flex;
     flex-direction: column !important;align-items: center;}
   .banner_container_content_left,.banner_container_content_right,.banner_container_content_left{
     width: 100%;
@@ -186,4 +186,31 @@ Link{
     width: 100%;
     margin-top: 20px;
   }
+}
+
+
+
+.navbar{
+  /* border:2px solid red; */
+  display: flex;
+  justify-content: center;
+  
+
+}
+
+
+.navbar_ul{
+  /* border: 2px solid green; */
+  margin: 0 auto;
+  width: 50%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  
+color: white;
+}
+
+
+.nav-link{
+  color: white;
 }

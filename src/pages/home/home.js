@@ -1,14 +1,16 @@
 import React from 'react'
 import {Link } from "react-router-dom"
 import "./home.css"
-import Header from "./header.js"
-function home() {
+import Header from "./header.js";
+import Navbar from "./Navbar"
+function home({Token}) {
+  console.log(Token,'App.js')
     return (
         <div>
-           
+           {/* <Navbar /> */}
           
           <div>
-              < Header/>
+              < Header Token={Token} />
           </div>
         </div>
           

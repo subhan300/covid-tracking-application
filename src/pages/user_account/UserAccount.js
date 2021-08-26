@@ -1,5 +1,6 @@
 import React,{useEffect,useState} from 'react'
 import "./UserAccount.css"
+import Navbar from '../home/Navbar'
 function UserAccount() {
 let [id,SetId]=useState("")
 let [result,setResult]=useState(".....")
@@ -31,6 +32,8 @@ console.log(token,"token")
 
     return (
         <div className="user_account">
+            <Navbar />
+            <br />
             <div className="account_container" >
                  <h1 className="account_title">User Account :</h1>
                  <h1  className="account_result">Enter your Id to check Result</h1>
